@@ -1,7 +1,7 @@
 use log::info;
 use webui_rs::webui;
 
-pub fn setup_sysinfo_handlers(window: &mut webui::Window) {
+pub fn setup_handlers(window: &mut webui::Window) {
     window.bind("get_system_info", |event| {
         info!("get_system_info called from frontend");
 
@@ -24,7 +24,6 @@ pub fn setup_sysinfo_handlers(window: &mut webui::Window) {
         info!("get_uptime called from frontend");
 
         let uptime_str = get_uptime();
-        // Parse the uptime string to get seconds
         let uptime_seconds = parse_uptime_to_seconds(&uptime_str);
 
         let response = serde_json::json!({
@@ -43,7 +42,6 @@ pub fn setup_sysinfo_handlers(window: &mut webui::Window) {
     info!("System info handlers set up successfully");
 }
 
-/// Get system information
 fn get_system_info() -> serde_json::Value {
     let mut sysinfo = serde_json::Map::new();
 
@@ -234,10 +232,9 @@ fn parse_uptime_to_seconds(uptime_str: &str) -> u64 {
     if uptime_str == "unknown" {
         return 0;
     }
-    
+
     let mut total_seconds = 0;
-    
-    // Split by spaces and parse each part
+
     let parts: Vec<&str> = uptime_str.split_whitespace().collect();
     for part in parts {
         if part.ends_with('d') {
@@ -258,6 +255,6 @@ fn parse_uptime_to_seconds(uptime_str: &str) -> u64 {
             }
         }
     }
-    
+
     total_seconds
 }

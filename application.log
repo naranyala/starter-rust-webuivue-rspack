@@ -444,3 +444,435 @@
 [2026-02-16 17:02:38.814] [INFO] [rustwebui_app] =============================================
 [2026-02-16 17:02:46.015] [INFO] [rustwebui_app] Application shutting down...
 [2026-02-16 17:02:46.015] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:38:32.381] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:38:32.381] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-17 01:38:32.381] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:38:32.381] [INFO] [rustwebui_app] Application starting...
+[2026-02-17 01:38:32.381] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:38:32.381] [INFO] [rustwebui_app] Backend-Frontend Communication Options:
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app] 
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app] [Transport Layer]:
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   1. WebUI IPC    - Direct IPC via WebUI library (recommended for function calls)
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   2. WebSocket    - TCP-based real-time messaging (port 44627)
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   3. HTTP/REST    - Can be added for REST API endpoints
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app] 
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app] [Serialization Format]:
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   1. JSON         - Human-readable, widely supported (current)
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   2. MessagePack  - Binary, compact, fast (rmp crate)
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   3. CBOR         - Binary, self-describing (cbor crate)
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   4. BinCode      - Binary, very fast, Rust-specific (bincode crate)
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   5. Postcard     - Binary, no-std compatible (postcard crate)
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app] Selected: WebUI IPC + WebSocket (hybrid mode)
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   - Transport: WebUI IPC + WebSocket
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app]   - Serialization: JSON (serde_json)
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:38:32.382] [INFO] [rustwebui_app] WebSocket server will run on port 44627
+[2026-02-17 01:38:32.383] [INFO] [rustwebui_app::infrastructure::websocket] WebSocket server listening on ws://127.0.0.1:44627
+[2026-02-17 01:38:32.384] [INFO] [rustwebui_app] WebSocket server initialized on port 44627
+[2026-02-17 01:38:32.384] [INFO] [rustwebui_app] WebSocket server running on port 44627
+[2026-02-17 01:38:32.578] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-17 01:38:32.580] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-17 01:38:32.581] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-17 01:38:32.581] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-17 01:38:32.582] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-17 01:38:32.582] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-17 01:38:47.946] [INFO] [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-17 01:38:47.946] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:38:55.124] [INFO] [rustwebui_app] Application shutting down...
+[2026-02-17 01:38:55.124] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:40:24.743] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] Application starting...
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] Backend-Frontend Communication Options:
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] 
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] [Transport Layer]:
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   1. WebUI IPC    - Direct IPC via WebUI library (recommended for function calls)
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   2. WebSocket    - TCP-based real-time messaging (port 43295)
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   3. HTTP/REST    - Can be added for REST API endpoints
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] 
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] [Serialization Format]:
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   1. JSON         - Human-readable, widely supported (current)
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   2. MessagePack  - Binary, compact, fast (rmp crate)
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   3. CBOR         - Binary, self-describing (cbor crate)
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   4. BinCode      - Binary, very fast, Rust-specific (bincode crate)
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   5. Postcard     - Binary, no-std compatible (postcard crate)
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] Selected: WebUI IPC + WebSocket (hybrid mode)
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   - Transport: WebUI IPC + WebSocket
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app]   - Serialization: JSON (serde_json)
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:40:24.744] [INFO] [rustwebui_app] WebSocket server will run on port 43295
+[2026-02-17 01:40:24.745] [INFO] [rustwebui_app::infrastructure::websocket] WebSocket server listening on ws://127.0.0.1:43295
+[2026-02-17 01:40:24.745] [INFO] [rustwebui_app] WebSocket server initialized on port 43295
+[2026-02-17 01:40:24.745] [INFO] [rustwebui_app] WebSocket server running on port 43295
+[2026-02-17 01:40:24.918] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-17 01:40:24.919] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-17 01:40:24.921] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-17 01:40:24.921] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-17 01:40:24.922] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-17 01:40:24.922] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-17 01:40:40.300] [INFO] [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-17 01:40:40.300] [INFO] [rustwebui_app] =============================================
+[2026-02-17 01:40:47.527] [INFO] [rustwebui_app] Application shutting down...
+[2026-02-17 01:40:47.527] [INFO] [rustwebui_app] =============================================
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 39873)
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 39873
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:39873
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 39873
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 39873
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T18:58:04Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T18:58:19Z [32mINFO [0m rustwebui_app[90m][0m Application started successfully, waiting for events...
+[90m[[0m2026-02-16T18:58:19Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T18:58:27Z [32mINFO [0m rustwebui_app[90m][0m Application shutting down...
+[90m[[0m2026-02-16T18:58:27Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 34525)
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 34525
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:34525
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 34525
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 34525
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T19:02:20Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T19:02:35Z [32mINFO [0m rustwebui_app[90m][0m Application started successfully, waiting for events...
+[90m[[0m2026-02-16T19:02:35Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:02:42Z [32mINFO [0m rustwebui_app[90m][0m Application shutting down...
+[90m[[0m2026-02-16T19:02:42Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 39685)
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 39685
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:39685
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 39685
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 39685
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T19:03:54Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T19:04:09Z [32mINFO [0m rustwebui_app[90m][0m Application started successfully, waiting for events...
+[90m[[0m2026-02-16T19:04:09Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:04:16Z [32mINFO [0m rustwebui_app[90m][0m Application shutting down...
+[90m[[0m2026-02-16T19:04:16Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 45937)
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 45937
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:45937
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 45937
+[90m[[0m2026-02-16T19:12:09Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 45937
+[90m[[0m2026-02-16T19:12:10Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T19:12:10Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T19:12:10Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T19:12:10Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T19:12:10Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T19:12:10Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T19:12:25Z [32mINFO [0m rustwebui_app[90m][0m Application started successfully, waiting for events...
+[90m[[0m2026-02-16T19:12:25Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:12:32Z [32mINFO [0m rustwebui_app[90m][0m Application shutting down...
+[90m[[0m2026-02-16T19:12:32Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 46359)
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 46359
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:46359
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 46359
+[90m[[0m2026-02-16T19:15:44Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 46359
+[90m[[0m2026-02-16T19:15:45Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T19:15:45Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T19:15:45Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T19:15:45Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T19:15:45Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T19:15:45Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T19:16:00Z [32mINFO [0m rustwebui_app[90m][0m Application started successfully, waiting for events...
+[90m[[0m2026-02-16T19:16:00Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:16:07Z [32mINFO [0m rustwebui_app[90m][0m Application shutting down...
+[90m[[0m2026-02-16T19:16:07Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 45981)
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 45981
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:45981
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 45981
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 45981
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T19:26:35Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 34917)
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 34917
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:34917
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 34917
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 34917
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T19:29:00Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T19:29:15Z [32mINFO [0m rustwebui_app[90m][0m Application started successfully, waiting for events...
+[90m[[0m2026-02-16T19:29:15Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 34321)
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 34321
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:34321
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 34321
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 34321
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T19:29:28Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T19:29:43Z [32mINFO [0m rustwebui_app[90m][0m Application started successfully, waiting for events...
+[90m[[0m2026-02-16T19:29:43Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 40851)
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 40851
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:40851
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 40851
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 40851
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T19:34:26Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m Starting: app v1.0.0
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m Application starting...
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m Backend-Frontend Communication Options:
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m [Transport Layer]:
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   1. WebUI IPC    - Direct IPC via WebUI library
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   2. WebSocket    - TCP-based real-time (port 33393)
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   3. HTTP/REST    - Can be added for REST API
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m 
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m [Serialization Format]:
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   1. JSON         - Human-readable (current)
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   2. MessagePack  - Binary, compact
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   3. CBOR         - Binary, self-describing
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   4. BinCode      - Binary, Rust-specific
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   5. Postcard     - Binary, no-std
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m Selected: WebUI IPC + WebSocket (hybrid)
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   - Transport: WebUI IPC + WebSocket
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m   - Serialization: JSON (serde_json)
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server will run on port 33393
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app::infrastructure::websocket[90m][0m WebSocket server listening on ws://127.0.0.1:33393
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server initialized on port 33393
+[90m[[0m2026-02-16T19:45:55Z [32mINFO [0m rustwebui_app[90m][0m WebSocket server running on port 33393
+[90m[[0m2026-02-16T19:45:56Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m Setting up UI handlers...
+[90m[[0m2026-02-16T19:45:56Z [32mINFO [0m rustwebui_app::commands::ui[90m][0m UI handlers set up successfully
+[90m[[0m2026-02-16T19:45:56Z [32mINFO [0m rustwebui_app::commands::sysinfo[90m][0m System info handlers set up successfully
+[90m[[0m2026-02-16T19:45:56Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Setting up window state change handlers...
+[90m[[0m2026-02-16T19:45:56Z [32mINFO [0m rustwebui_app::commands::window_state[90m][0m Window state change handlers set up successfully
+[90m[[0m2026-02-16T19:45:56Z [32mINFO [0m rustwebui_app[90m][0m Loading application UI from frontend/dist/index.html
+[90m[[0m2026-02-16T19:46:11Z [32mINFO [0m rustwebui_app[90m][0m Application started successfully, waiting for events...
+[90m[[0m2026-02-16T19:46:11Z [32mINFO [0m rustwebui_app[90m][0m =============================================
+[90m[[0m2026-02-16T19:46:18Z [32mINFO [0m rustwebui_app[90m][0m Application shutting down...
+[90m[[0m2026-02-16T19:46:18Z [32mINFO [0m rustwebui_app[90m][0m =============================================

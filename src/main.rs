@@ -3,25 +3,20 @@ use std::sync::Arc;
 use std::sync::atomic::{AtomicU16, Ordering};
 use webui_rs::webui;
 
-// Global storage for WebSocket port
 static WS_PORT_STORAGE: AtomicU16 = AtomicU16::new(0);
 
-// Import from new MVVM layers
-mod domains;
-mod application;
+mod commands;
+mod db;
 mod infrastructure;
-mod presentation;
-mod shared;
 
-use crate::infrastructure::{AppConfig, init_logging_with_config};
-use crate::infrastructure::websocket::{WebSocketServer, get_available_port};
+use infrastructure::{AppConfig, init_logging_with_config};
+use infrastructure::websocket::{WebSocketServer, get_available_port};
+use db::manager::DatabaseManager;
 
-// Build-time generated config
 include!(concat!(env!("OUT_DIR"), "/build_config.rs"));
 
 #[tokio::main]
 async fn main() {
-    // Load application configuration
     let config = match AppConfig::load() {
         Ok(config) => {
             println!("Configuration loaded successfully!");
@@ -39,7 +34,6 @@ async fn main() {
         }
     };
 
-    // Initialize logging system with config settings
     if let Err(e) = init_logging_with_config(
         Some(&config.log_file),
         config.get_log_level(),
@@ -59,13 +53,32 @@ async fn main() {
 
     info!("Application starting...");
 
-    // Get available port for WebSocket server
     let ws_port = get_available_port().await.unwrap_or(9876);
+
+    info!("=============================================");
+    info!("Backend-Frontend Communication Options:");
+    info!("");
+    info!("[Transport Layer]:");
+    info!("  1. WebUI IPC    - Direct IPC via WebUI library");
+    info!("  2. WebSocket    - TCP-based real-time (port {})", ws_port);
+    info!("  3. HTTP/REST    - Can be added for REST API");
+    info!("");
+    info!("[Serialization Format]:");
+    info!("  1. JSON         - Human-readable (current)");
+    info!("  2. MessagePack  - Binary, compact");
+    info!("  3. CBOR         - Binary, self-describing");
+    info!("  4. BinCode      - Binary, Rust-specific");
+    info!("  5. Postcard     - Binary, no-std");
+    info!("=============================================");
+    info!("Selected: WebUI IPC + WebSocket (hybrid)");
+    info!("  - Transport: WebUI IPC + WebSocket");
+    info!("  - Serialization: JSON (serde_json)");
+    info!("=============================================");
+
     info!("WebSocket server will run on port {}", ws_port);
 
-    // Initialize database
     let db_manager = Arc::new(
-        crate::infrastructure::DatabaseManager::new(config.db_path.clone())
+        DatabaseManager::new(config.db_path.clone())
             .expect("Failed to create database manager")
     );
 
@@ -73,39 +86,26 @@ async fn main() {
         db_manager.insert_sample_data().ok();
     }
 
-    // Create WebSocket server
     let ws_server = WebSocketServer::new(ws_port);
     if let Err(e) = ws_server.start().await {
         error!("Failed to start WebSocket server: {}", e);
     }
     info!("WebSocket server initialized on port {}", ws_port);
-
-    // Pass WebSocket port to frontend via JavaScript
     info!("WebSocket server running on port {}", ws_port);
 
-    // Create a new window
     let mut my_window = webui::Window::new();
 
-    // Set up presentation layer handlers
-    presentation::handlers::ui_handlers::setup_ui_handlers(&mut my_window);
-    presentation::handlers::counter_handlers::setup_counter_handlers(&mut my_window);
-    presentation::handlers::sysinfo_handlers::setup_sysinfo_handlers(&mut my_window);
-    presentation::handlers::window_state_handlers::setup_window_state_handlers(&mut my_window);
+    commands::setup_all_handlers(&mut my_window);
 
-    // Store the WebSocket port globally so it can be accessed by the handler
     WS_PORT_STORAGE.store(ws_port, Ordering::Relaxed);
-
-    // Bind the WebSocket port to the frontend
     my_window.bind("get_port_info", get_port_info_handler);
 
-    // Show the built Vue.js application
     info!("Loading application UI from frontend/dist/index.html");
     my_window.show("frontend/dist/index.html");
 
     info!("Application started successfully, waiting for events...");
     info!("=============================================");
 
-    // Wait until all windows are closed
     webui::wait();
 
     info!("Application shutting down...");

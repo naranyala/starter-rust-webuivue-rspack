@@ -1,7 +1,7 @@
 use log::info;
 use webui_rs::webui;
 
-pub fn setup_ui_handlers(window: &mut webui::Window) {
+pub fn setup_handlers(window: &mut webui::Window) {
     info!("Setting up UI handlers...");
 
     window.bind("open_folder", |_event| {
