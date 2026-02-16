@@ -1,22 +1,26 @@
-use log::info;
+use log::{error, info};
 use std::sync::Arc;
+use std::sync::atomic::{AtomicU16, Ordering};
 use webui_rs::webui;
 
-// Import from infrastructure layer
+// Global storage for WebSocket port
+static WS_PORT_STORAGE: AtomicU16 = AtomicU16::new(0);
+
+// Import from new MVVM layers
+mod domains;
+mod application;
 mod infrastructure;
-use infrastructure::{config::AppConfig, database::Database, di, logging};
+mod presentation;
+mod shared;
 
-// Import from utilities layer
-mod utilities;
-
-// Import from use cases layer (business logic)
-mod use_cases;
-use use_cases::handlers;
+use crate::infrastructure::{AppConfig, init_logging_with_config};
+use crate::infrastructure::websocket::{WebSocketServer, get_available_port};
 
 // Build-time generated config
 include!(concat!(env!("OUT_DIR"), "/build_config.rs"));
 
-fn main() {
+#[tokio::main]
+async fn main() {
     // Load application configuration
     let config = match AppConfig::load() {
         Ok(config) => {
@@ -36,8 +40,8 @@ fn main() {
     };
 
     // Initialize logging system with config settings
-    if let Err(e) = logging::init_logging_with_config(
-        Some(config.get_log_file()),
+    if let Err(e) = init_logging_with_config(
+        Some(&config.log_file),
         config.get_log_level(),
         config.is_append_log(),
     ) {
@@ -53,55 +57,46 @@ fn main() {
     );
     info!("=============================================");
 
-    // Initialize dependency injection container
-    di::init_container();
-    info!("Dependency injection container initialized");
-
     info!("Application starting...");
 
-    // Get database path from config
-    let db_path = config.get_db_path();
-    info!("Database path: {}", db_path);
+    // Get available port for WebSocket server
+    let ws_port = get_available_port().await.unwrap_or(9876);
+    info!("WebSocket server will run on port {}", ws_port);
 
-    // Initialize SQLite database
-    let db = match Database::new(db_path) {
-        Ok(db) => {
-            info!("Database initialized successfully");
-            if let Err(e) = db.init() {
-                eprintln!("Failed to initialize database schema: {}", e);
-                return;
-            }
-            if config.should_create_sample_data() {
-                if let Err(e) = db.insert_sample_data() {
-                    eprintln!("Failed to insert sample data: {}", e);
-                    return;
-                }
-                info!("Sample data created (if not exists)");
-            }
-            Arc::new(db)
-        }
-        Err(e) => {
-            eprintln!("Failed to initialize database: {}", e);
-            return;
-        }
-    };
+    // Initialize database
+    let db_manager = Arc::new(
+        crate::infrastructure::DatabaseManager::new(config.db_path.clone())
+            .expect("Failed to create database manager")
+    );
 
-    // Initialize database handlers with the database instance
-    handlers::db_handlers::init_database(Arc::clone(&db));
+    if config.should_create_sample_data() {
+        db_manager.insert_sample_data().ok();
+    }
+
+    // Create WebSocket server
+    let ws_server = WebSocketServer::new(ws_port);
+    if let Err(e) = ws_server.start().await {
+        error!("Failed to start WebSocket server: {}", e);
+    }
+    info!("WebSocket server initialized on port {}", ws_port);
+
+    // Pass WebSocket port to frontend via JavaScript
+    info!("WebSocket server running on port {}", ws_port);
 
     // Create a new window
     let mut my_window = webui::Window::new();
 
-    // Set up UI event handlers from use-cases
-    handlers::ui_handlers::setup_ui_handlers(&mut my_window);
-    handlers::ui_handlers::setup_counter_handlers(&mut my_window);
-    handlers::db_handlers::setup_db_handlers(&mut my_window);
-    handlers::sysinfo_handlers::setup_sysinfo_handlers(&mut my_window);
-    handlers::utilities_handlers::setup_utilities_handlers(&mut my_window);
+    // Set up presentation layer handlers
+    presentation::handlers::ui_handlers::setup_ui_handlers(&mut my_window);
+    presentation::handlers::counter_handlers::setup_counter_handlers(&mut my_window);
+    presentation::handlers::sysinfo_handlers::setup_sysinfo_handlers(&mut my_window);
+    presentation::handlers::window_state_handlers::setup_window_state_handlers(&mut my_window);
 
-    // Get window settings from config
-    let window_title = config.get_window_title();
-    info!("Window title: {}", window_title);
+    // Store the WebSocket port globally so it can be accessed by the handler
+    WS_PORT_STORAGE.store(ws_port, Ordering::Relaxed);
+
+    // Bind the WebSocket port to the frontend
+    my_window.bind("get_port_info", get_port_info_handler);
 
     // Show the built Vue.js application
     info!("Loading application UI from frontend/dist/index.html");
@@ -115,4 +110,15 @@ fn main() {
 
     info!("Application shutting down...");
     info!("=============================================");
+}
+
+fn get_port_info_handler(event: webui::Event) {
+    let port = WS_PORT_STORAGE.load(Ordering::Relaxed) as i64;
+    
+    let js = format!(
+        "window._webui_port_callback && window._webui_port_callback({})",
+        port
+    );
+    
+    webui::Window::from_id(event.window).run_js(&js);
 }

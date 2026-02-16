@@ -273,3 +273,174 @@
 [2026-02-12 08:55:45.831] INFO [rustwebui_app] =============================================
 [2026-02-12 08:55:52.953] INFO [rustwebui_app] Application shutting down...
 [2026-02-12 08:55:52.953] INFO [rustwebui_app] =============================================
+[2026-02-16 12:11:47.305] INFO [rustwebui_app] =============================================
+[2026-02-16 12:11:47.308] INFO [rustwebui_app] Starting: Rust WebUI SQLite Demo v1.0.0
+[2026-02-16 12:11:47.308] INFO [rustwebui_app] =============================================
+[2026-02-16 12:11:47.308] INFO [rustwebui_app] Dependency injection container initialized
+[2026-02-16 12:11:47.308] INFO [rustwebui_app] Application starting...
+[2026-02-16 12:11:47.308] INFO [rustwebui_app] Database path: app.db
+[2026-02-16 12:11:47.309] INFO [rustwebui_app::infrastructure::database] Database connection established: app.db
+[2026-02-16 12:11:47.309] INFO [rustwebui_app] Database initialized successfully
+[2026-02-16 12:11:47.309] INFO [rustwebui_app::infrastructure::database] Database schema initialized
+[2026-02-16 12:11:47.309] INFO [rustwebui_app::infrastructure::database] Sample data already exists, skipping insertion
+[2026-02-16 12:11:47.310] INFO [rustwebui_app] Sample data created (if not exists)
+[2026-02-16 12:11:47.310] INFO [rustwebui_app::use_cases::handlers::db_handlers] Database handlers initialized
+[2026-02-16 12:11:47.788] INFO [rustwebui_app::use_cases::handlers::db_handlers] Database handlers set up successfully
+[2026-02-16 12:11:47.789] INFO [rustwebui_app::use_cases::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 12:11:47.796] INFO [rustwebui_app] Window title: Rust WebUI Application
+[2026-02-16 12:11:47.796] INFO [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 12:12:03.516] INFO [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-16 12:12:03.520] INFO [rustwebui_app] =============================================
+[2026-02-16 12:12:10.613] INFO [rustwebui_app] Application shutting down...
+[2026-02-16 12:12:10.618] INFO [rustwebui_app] =============================================
+[2026-02-16 13:07:29.675] [INFO] [rustwebui_app] =============================================
+[2026-02-16 13:07:29.676] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 13:07:29.676] [INFO] [rustwebui_app] =============================================
+[2026-02-16 13:07:29.676] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 13:07:29.952] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 13:07:29.953] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 13:07:29.953] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 13:07:29.954] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 13:20:49.108] [INFO] [rustwebui_app] =============================================
+[2026-02-16 13:20:49.109] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 13:20:49.109] [INFO] [rustwebui_app] =============================================
+[2026-02-16 13:20:49.109] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 13:20:49.336] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 13:20:49.336] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 13:20:49.337] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 13:20:49.337] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 16:09:37.968] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:09:37.969] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 16:09:37.969] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:09:37.969] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 16:09:38.137] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-16 16:09:38.138] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-16 16:09:38.139] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 16:09:38.139] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 16:09:38.140] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 16:09:38.140] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 16:09:53.467] [INFO] [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-16 16:09:53.467] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:10:00.658] [INFO] [rustwebui_app] Application shutting down...
+[2026-02-16 16:10:00.658] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:15:17.522] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:15:17.522] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 16:15:17.522] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:15:17.522] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 16:15:17.698] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-16 16:15:17.699] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-16 16:15:17.700] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 16:15:17.700] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 16:15:17.701] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 16:15:17.701] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 16:15:32.996] [INFO] [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-16 16:15:32.997] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:15:40.130] [INFO] [rustwebui_app] Application shutting down...
+[2026-02-16 16:15:40.130] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:17:51.691] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:17:51.691] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 16:17:51.691] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:17:51.691] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 16:17:51.863] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-16 16:17:51.864] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-16 16:17:51.865] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 16:17:51.865] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 16:17:51.866] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 16:17:51.866] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 16:18:45.392] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:18:45.392] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 16:18:45.392] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:18:45.392] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 16:18:45.569] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-16 16:18:45.570] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-16 16:18:45.571] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 16:18:45.571] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 16:18:45.572] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 16:18:45.572] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 16:43:54.448] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:43:54.448] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 16:43:54.448] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:43:54.448] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 16:43:54.449] [INFO] [rustwebui_app] WebSocket server will run on port 38069
+[2026-02-16 16:43:54.451] [INFO] [rustwebui_app::infrastructure::websocket] WebSocket server listening on ws://127.0.0.1:38069
+[2026-02-16 16:43:54.451] [INFO] [rustwebui_app] WebSocket server running on port 38069
+[2026-02-16 16:43:54.666] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-16 16:43:54.667] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-16 16:43:54.668] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 16:43:54.668] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 16:43:54.668] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 16:43:54.668] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 16:44:09.985] [INFO] [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-16 16:44:09.985] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:44:17.193] [INFO] [rustwebui_app] Application shutting down...
+[2026-02-16 16:44:17.193] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:49:09.397] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:49:09.397] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 16:49:09.398] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:49:09.398] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 16:49:09.398] [INFO] [rustwebui_app] WebSocket server will run on port 44927
+[2026-02-16 16:49:09.399] [INFO] [rustwebui_app::infrastructure::websocket] WebSocket server listening on ws://127.0.0.1:44927
+[2026-02-16 16:49:09.399] [INFO] [rustwebui_app] WebSocket server running on port 44927
+[2026-02-16 16:49:09.583] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-16 16:49:09.585] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-16 16:49:09.586] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 16:49:09.586] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 16:49:09.587] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 16:49:09.587] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 16:49:24.928] [INFO] [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-16 16:49:24.928] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:49:32.185] [INFO] [rustwebui_app] Application shutting down...
+[2026-02-16 16:49:32.185] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:49:37.360] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:49:37.360] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 16:49:37.361] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:49:37.361] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 16:49:37.361] [INFO] [rustwebui_app] WebSocket server will run on port 39969
+[2026-02-16 16:49:37.364] [INFO] [rustwebui_app::infrastructure::websocket] WebSocket server listening on ws://127.0.0.1:39969
+[2026-02-16 16:49:37.364] [INFO] [rustwebui_app] WebSocket server running on port 39969
+[2026-02-16 16:49:37.558] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-16 16:49:37.560] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-16 16:49:37.560] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 16:49:37.561] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 16:49:37.561] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 16:49:37.561] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 16:49:52.909] [INFO] [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-16 16:49:52.910] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:50:00.086] [INFO] [rustwebui_app] Application shutting down...
+[2026-02-16 16:50:00.086] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:50:53.504] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:50:53.504] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 16:50:53.509] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:50:53.509] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 16:50:53.509] [INFO] [rustwebui_app] WebSocket server will run on port 32927
+[2026-02-16 16:50:53.510] [INFO] [rustwebui_app::infrastructure::websocket] WebSocket server listening on ws://127.0.0.1:32927
+[2026-02-16 16:50:53.510] [INFO] [rustwebui_app] WebSocket server initialized on port 32927
+[2026-02-16 16:50:53.510] [INFO] [rustwebui_app] WebSocket server running on port 32927
+[2026-02-16 16:50:53.678] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-16 16:50:53.680] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-16 16:50:53.680] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 16:50:53.680] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 16:50:53.681] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 16:50:53.681] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 16:51:08.991] [INFO] [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-16 16:51:08.991] [INFO] [rustwebui_app] =============================================
+[2026-02-16 16:51:16.163] [INFO] [rustwebui_app] Application shutting down...
+[2026-02-16 16:51:16.163] [INFO] [rustwebui_app] =============================================
+[2026-02-16 17:02:23.210] [INFO] [rustwebui_app] =============================================
+[2026-02-16 17:02:23.210] [INFO] [rustwebui_app] Starting: app v1.0.0
+[2026-02-16 17:02:23.210] [INFO] [rustwebui_app] =============================================
+[2026-02-16 17:02:23.210] [INFO] [rustwebui_app] Application starting...
+[2026-02-16 17:02:23.210] [INFO] [rustwebui_app] WebSocket server will run on port 34289
+[2026-02-16 17:02:23.212] [INFO] [rustwebui_app::infrastructure::websocket] WebSocket server listening on ws://127.0.0.1:34289
+[2026-02-16 17:02:23.212] [INFO] [rustwebui_app] WebSocket server initialized on port 34289
+[2026-02-16 17:02:23.212] [INFO] [rustwebui_app] WebSocket server running on port 34289
+[2026-02-16 17:02:23.422] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] Setting up UI handlers...
+[2026-02-16 17:02:23.423] [INFO] [rustwebui_app::presentation::handlers::ui_handlers] UI handlers set up successfully
+[2026-02-16 17:02:23.424] [INFO] [rustwebui_app::presentation::handlers::sysinfo_handlers] System info handlers set up successfully
+[2026-02-16 17:02:23.424] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Setting up window state change handlers...
+[2026-02-16 17:02:23.425] [INFO] [rustwebui_app::presentation::handlers::window_state_handlers] Window state change handlers set up successfully
+[2026-02-16 17:02:23.425] [INFO] [rustwebui_app] Loading application UI from frontend/dist/index.html
+[2026-02-16 17:02:38.814] [INFO] [rustwebui_app] Application started successfully, waiting for events...
+[2026-02-16 17:02:38.814] [INFO] [rustwebui_app] =============================================
+[2026-02-16 17:02:46.015] [INFO] [rustwebui_app] Application shutting down...
+[2026-02-16 17:02:46.015] [INFO] [rustwebui_app] =============================================

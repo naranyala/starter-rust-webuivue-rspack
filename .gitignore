@@ -1,4 +1,6 @@
 
-target
+target/
+static/
+
 frontend/dist
 frontend/node_modules

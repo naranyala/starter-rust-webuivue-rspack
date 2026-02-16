@@ -1,0 +1,1 @@
+export { useWindowTracking } from './useWindowTracking';
