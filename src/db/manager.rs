@@ -1,15 +1,17 @@
+use crate::core::error::{lock_error, AppError, AppResult};
 use crate::db::models::User;
 use rusqlite::{params, Connection};
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, MutexGuard};
 
 pub struct DatabaseManager {
     conn: Arc<Mutex<Connection>>,
 }
 
 impl DatabaseManager {
-    pub fn new(db_path: String) -> Result<Self, Box<dyn std::error::Error>> {
-        let conn = Connection::open(&db_path)?;
-        conn.execute_batch("PRAGMA foreign_keys = ON;")?;
+    pub fn new(db_path: String) -> AppResult<Self> {
+        let conn = Connection::open(&db_path).map_err(AppError::Database)?;
+        conn.execute_batch("PRAGMA foreign_keys = ON;")
+            .map_err(AppError::Database)?;
 
         let conn = Arc::new(Mutex::new(conn));
         let db_manager = Self { conn };
@@ -18,8 +20,8 @@ impl DatabaseManager {
         Ok(db_manager)
     }
 
-    pub fn init(&self) -> Result<(), Box<dyn std::error::Error>> {
-        let conn = self.conn.lock().unwrap();
+    pub fn init(&self) -> AppResult<()> {
+        let conn = self.conn.lock().map_err(lock_error)?;
 
         conn.execute(
             "CREATE TABLE IF NOT EXISTS users (
@@ -32,43 +34,48 @@ impl DatabaseManager {
                 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )",
             [],
-        )?;
+        )
+        .map_err(AppError::Database)?;
 
         Ok(())
     }
 
-    pub fn insert_sample_data(&self) -> Result<(), Box<dyn std::error::Error>> {
-        let conn = self.conn.lock().unwrap();
+    pub fn insert_sample_data(&self) -> AppResult<()> {
+        let conn = self.conn.lock().map_err(lock_error)?;
 
-        let mut stmt = conn.prepare("SELECT COUNT(*) FROM users")?;
-        let count: i64 = stmt.query_row([], |row| row.get(0))?;
+        let count: i64 = conn
+            .query_row("SELECT COUNT(*) FROM users", [], |row| row.get(0))
+            .map_err(AppError::Database)?;
 
         if count == 0 {
             conn.execute(
                 "INSERT INTO users (name, email, role, status) VALUES (?1, ?2, ?3, ?4)",
                 params!["Admin User", "admin@example.com", "Administrator", "Active"],
-            )?;
+            )
+            .map_err(AppError::Database)?;
 
             conn.execute(
                 "INSERT INTO users (name, email, role, status) VALUES (?1, ?2, ?3, ?4)",
                 params!["John Doe", "john@example.com", "User", "Active"],
-            )?;
+            )
+            .map_err(AppError::Database)?;
 
             conn.execute(
                 "INSERT INTO users (name, email, role, status) VALUES (?1, ?2, ?3, ?4)",
                 params!["Jane Smith", "jane@example.com", "User", "Active"],
-            )?;
+            )
+            .map_err(AppError::Database)?;
         }
 
         Ok(())
     }
 
-    pub fn get_all_users(&self) -> Result<Vec<User>, Box<dyn std::error::Error>> {
-        let conn = self.conn.lock().unwrap();
+    pub fn get_all_users(&self) -> AppResult<Vec<User>> {
+        let conn = self.conn.lock().map_err(lock_error)?;
 
         let mut stmt = conn.prepare(
             "SELECT id, name, email, role, status, created_at, updated_at FROM users ORDER BY id",
-        )?;
+        ).map_err(AppError::Database)?;
 
         let users = stmt
             .query_map([], |row| {
@@ -81,18 +88,20 @@ impl DatabaseManager {
                     created_at: row.get(5)?,
                     updated_at: row.get(6)?,
                 })
-            })?
-            .collect::<Result<Vec<_>, _>>()?;
+            })
+            .map_err(AppError::Database)?
+            .collect::<Result<Vec<_>, _>>()
+            .map_err(AppError::Database)?;
 
         Ok(users)
     }
 
-    pub fn get_user_by_id(&self, id: i64) -> Result<Option<User>, Box<dyn std::error::Error>> {
-        let conn = self.conn.lock().unwrap();
+    pub fn get_user_by_id(&self, id: i64) -> AppResult<Option<User>> {
+        let conn = self.conn.lock().map_err(lock_error)?;
 
         let mut stmt = conn.prepare(
             "SELECT id, name, email, role, status, created_at, updated_at FROM users WHERE id = ?1",
-        )?;
+        ).map_err(AppError::Database)?;
 
         match stmt.query_row([id], |row| {
             Ok(User {
@@ -107,23 +116,18 @@ impl DatabaseManager {
         }) {
             Ok(user) => Ok(Some(user)),
             Err(rusqlite::Error::QueryReturnedNoRows) => Ok(None),
-            Err(e) => Err(Box::new(e)),
+            Err(e) => Err(AppError::Database(e)),
         }
     }
 
-    pub fn insert_user(
-        &self,
-        name: &str,
-        email: &str,
-        role: &str,
-        status: &str,
-    ) -> Result<i64, Box<dyn std::error::Error>> {
-        let conn = self.conn.lock().unwrap();
+    pub fn insert_user(&self, name: &str, email: &str, role: &str, status: &str) -> AppResult<i64> {
+        let conn = self.conn.lock().map_err(lock_error)?;
 
         conn.execute(
             "INSERT INTO users (name, email, role, status) VALUES (?1, ?2, ?3, ?4)",
             params![name, email, role, status],
-        )?;
+        )
+        .map_err(AppError::Database)?;
 
         Ok(conn.last_insert_rowid())
     }
@@ -135,38 +139,37 @@ impl DatabaseManager {
         email: Option<&str>,
         role: Option<&str>,
         status: Option<&str>,
-    ) -> Result<usize, Box<dyn std::error::Error>> {
-        let conn = self.conn.lock().unwrap();
+    ) -> AppResult<usize> {
+        let conn = self.conn.lock().map_err(lock_error)?;
 
         let mut set_parts = Vec::new();
-        let mut params_vec = Vec::new();
+        let mut params_vec: Vec<Box<dyn rusqlite::ToSql>> = Vec::new();
 
         if let Some(name_val) = name {
             set_parts.push(format!("name = ?{}", params_vec.len() + 1));
-            params_vec.push(name_val);
+            params_vec.push(Box::new(name_val.to_string()));
         }
 
         if let Some(email_val) = email {
             set_parts.push(format!("email = ?{}", params_vec.len() + 1));
-            params_vec.push(email_val);
+            params_vec.push(Box::new(email_val.to_string()));
         }
 
         if let Some(role_val) = role {
             set_parts.push(format!("role = ?{}", params_vec.len() + 1));
-            params_vec.push(role_val);
+            params_vec.push(Box::new(role_val.to_string()));
         }
 
         if let Some(status_val) = status {
             set_parts.push(format!("status = ?{}", params_vec.len() + 1));
-            params_vec.push(status_val);
+            params_vec.push(Box::new(status_val.to_string()));
         }
 
         if set_parts.is_empty() {
             return Ok(0);
         }
 
-        let id_str = id.to_string();
-        params_vec.push(&id_str);
+        params_vec.push(Box::new(id));
 
         let sql = format!(
             "UPDATE users SET {} WHERE id = ?{}",
@@ -174,14 +177,23 @@ impl DatabaseManager {
             params_vec.len()
         );
 
-        let affected_rows = conn.execute(&sql, rusqlite::params_from_iter(params_vec))?;
+        let params_refs: Vec<&dyn rusqlite::ToSql> =
+            params_vec.iter().map(|p| p.as_ref()).collect();
+
+        let affected_rows = conn
+            .execute(&sql, params_refs.as_slice())
+            .map_err(AppError::Database)?;
+
         Ok(affected_rows)
     }
 
-    pub fn delete_user(&self, id: i64) -> Result<usize, Box<dyn std::error::Error>> {
-        let conn = self.conn.lock().unwrap();
+    pub fn delete_user(&self, id: i64) -> AppResult<usize> {
+        let conn = self.conn.lock().map_err(lock_error)?;
 
-        let affected_rows = conn.execute("DELETE FROM users WHERE id = ?1", [id])?;
+        let affected_rows = conn
+            .execute("DELETE FROM users WHERE id = ?1", [id])
+            .map_err(AppError::Database)?;
+
         Ok(affected_rows)
     }
 }
