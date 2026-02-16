@@ -2,7 +2,7 @@
   <aside class="sidebar">
     <div class="home-button-container">
       <button @click="$emit('home')" class="home-btn" title="Show Main View">
-        <span class="home-icon">🏠</span>
+        <span class="home-icon">[Home]</span>
         <span class="home-text">Home</span>
       </button>
     </div>
@@ -20,7 +20,7 @@
         :class="{ minimized: window.minimized }"
         @click="$emit('toggle', window)"
       >
-        <div class="window-icon">📷</div>
+        <div class="window-icon">[W]</div>
         <div class="window-info">
           <span class="window-title">{{ window.title }}</span>
           <span class="window-status">{{ window.minimized ? 'Minimized' : 'Active' }}</span>

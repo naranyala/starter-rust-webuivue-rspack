@@ -44,7 +44,7 @@ export function useHomeViewModel() {
       id: 'system',
       title: 'System Information',
       description: 'View system details and diagnostics',
-      icon: '⚙️',
+      icon: '[System]',
       component: 'SystemInfo',
     },
   ];

@@ -1,7 +1,7 @@
 <template>
   <div class="system-info">
     <div class="system-header">
-      <h2>🖥️ System Dashboard</h2>
+      <h2>[System] System Dashboard</h2>
       <Button variant="primary" @click="refreshInfo">Refresh</Button>
     </div>
 
@@ -16,17 +16,17 @@
       <div class="overview-section">
         <div class="info-grid">
           <div class="info-card">
-            <div class="info-icon">💻</div>
+            <div class="info-icon">[Platform]</div>
             <h3>Platform</h3>
             <p>{{ systemStore.systemInfo?.platform || 'N/A' }}</p>
           </div>
           <div class="info-card">
-            <div class="info-icon">⚙️</div>
+            <div class="info-icon">[Arch]</div>
             <h3>Architecture</h3>
             <p>{{ systemStore.systemInfo?.arch || 'N/A' }}</p>
           </div>
           <div class="info-card">
-            <div class="info-icon">👨‍💼</div>
+            <div class="info-icon">[OS]</div>
             <h3>OS Family</h3>
             <p>{{ systemStore.systemInfo?.family || 'N/A' }}</p>
           </div>

@@ -83,12 +83,12 @@ Handles incoming window state change events from frontend:
 - Emits to event bus for other components
 
 **Visual indicators in logs:**
-- 📂 Opened
-- 👁️ Focused
-- 🗕️ Minimized
-- 🗖️ Restored
-- 🗙️ Maximized
-- ❌ Closed
+- [Opened] Opened
+- [Focused] Focused
+- [Minimized] Minimized
+- [Restored] Restored
+- [Maximized] Maximized
+- [Closed] Closed
 
 #### 3. Setup in Main
 
@@ -102,18 +102,31 @@ presentation::handlers::window_handlers::setup_window_handlers(&mut my_window);
 
 | Event | Description | Frontend Trigger | Backend Log |
 |-------|-------------|------------------|-------------|
-| `opened` | Window created | `openWindow()` | 📂 Window opened |
-| `focused` | Window focused | `focusWindow()`, clicking window | 👁️ Window focused |
-| `minimized` | Window minimized | Minimize button, `minimizeAll()` | 🗕️ Window minimized |
-| `restored` | Window restored | Restore button, focusing minimized | 🗖️ Window restored |
-| `maximized` | Window maximized | Maximize button | 🗙️ Window maximized |
-| `closed` | Window closed | Close button | ❌ Window closed |
+| `opened` | Window created | `openWindow()` | [Opened] Window opened |
+| `focused` | Window focused | `focusWindow()`, clicking window | [Focused] Window focused |
+| `minimized` | Window minimized | Minimize button, `minimizeAll()` | [Minimized] Window minimized |
+| `restored` | Window restored | Restore button, focusing minimized | [Restored] Window restored |
+| `maximized` | Window maximized | Maximize button | [Maximized] Window maximized |
+| `closed` | Window closed | Close button | [Closed] Window closed |
 
 ## Example Backend Output
 
 ```
+========================================
+  [Window State Change]
+========================================
+
+  Window ID: 1
+  Window Title: User Management
+  Component: UserList
+  Previous State: inactive
+  New State: focused
+  Timestamp: 2026-02-16T10:30:00.000Z
+
+[2026-02-16 10:30:00.123 INF] src/presentation/handlers/window_handlers [Window] 1 - 'User Management' (UserList) changed from Some("inactive") to "focused"
+```
 ============================================================
-  👁️ Window State Change
+  [Window State Change]
 ============================================================
 
   Window ID: 1

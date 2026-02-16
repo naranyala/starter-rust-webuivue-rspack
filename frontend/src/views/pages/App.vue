@@ -16,7 +16,7 @@
         <section class="cards-section">
           <div class="cards-grid two-cards">
             <FeatureCard
-              icon="💻"
+              icon="[System]"
               title="System Information"
               description="View detailed system information including OS, memory, CPU, and runtime statistics."
               :tags="['Hardware', 'Stats']"
@@ -24,7 +24,7 @@
             />
 
             <FeatureCard
-              icon="🗄️"
+              icon="[DB]"
               title="SQLite Database"
               description="Interactive database viewer with sample data. Connects to backend SQLite integration."
               :tags="['Database', 'Mockup']"
@@ -54,7 +54,7 @@ const dbUsers = ref<User[]>([]);
 const isLoadingUsers = ref(false);
 
 const openSystemInfoWindow = () => {
-  openWindow('System Information', generateSystemInfoHTML(), '💻');
+  openWindow('System Information', generateSystemInfoHTML(), '[System]');
 };
 
 const openSQLiteWindow = () => {
@@ -70,7 +70,7 @@ const openSQLiteWindow = () => {
     (window as any).getDbStats();
   }
 
-  openWindow('SQLite Database', generateSQLiteHTML(dbUsers.value), '🗄️');
+  openWindow('SQLite Database', generateSQLiteHTML(dbUsers.value), '[DB]');
 };
 
 (window as any).refreshUsers = () => {

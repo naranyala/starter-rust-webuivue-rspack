@@ -33,7 +33,7 @@
       </div>
       
       <div class="status-card" v-if="connInfo.reconnectAttempts > 0">
-        <div class="status-icon">🔄</div>
+        <div class="status-icon">[Reconnecting]</div>
         <div class="status-text">
           <div class="status-label">Reconnect Attempts</div>
           <div class="status-value">{{ connInfo.reconnectAttempts }}/10</div>
@@ -49,7 +49,7 @@
       </div>
       
       <div class="status-card" v-if="connInfo.pendingMessages > 0">
-        <div class="status-icon">⏳</div>
+        <div class="status-icon">[Pending]</div>
         <div class="status-text">
           <div class="status-label">Pending Messages</div>
           <div class="status-value">{{ connInfo.pendingMessages }}</div>
@@ -68,17 +68,17 @@
     <div class="connection-timeline" v-if="connInfo.lastConnectedAt || connInfo.lastDisconnectedAt">
       <h3>Connection Timeline</h3>
       <div class="timeline-item" v-if="connInfo.lastConnectedAt">
-        <span class="timeline-icon">🔗</span>
+        <span class="timeline-icon">[Connected]</span>
         <span class="timeline-label">Last Connected:</span>
         <span class="timeline-value">{{ formatTime(connInfo.lastConnectedAt) }}</span>
       </div>
       <div class="timeline-item" v-if="connInfo.lastDisconnectedAt">
-        <span class="timeline-icon">❌</span>
+        <span class="timeline-icon">[Disconnected]</span>
         <span class="timeline-label">Last Disconnected:</span>
         <span class="timeline-value">{{ formatTime(connInfo.lastDisconnectedAt) }}</span>
       </div>
       <div class="timeline-item error" v-if="connInfo.lastErrorAt">
-        <span class="timeline-icon">⚠️</span>
+        <span class="timeline-icon">[Error]</span>
         <span class="timeline-label">Last Error:</span>
         <span class="timeline-value">{{ formatTime(connInfo.lastErrorAt) }}</span>
         <span class="timeline-error">{{ connInfo.lastError }}</span>
@@ -138,15 +138,15 @@ const connectionStateClass = computed(() => {
 const connectionIcon = computed(() => {
   switch (connectionState.value) {
     case 'connected':
-      return '🔗';
+      return '[Connected]';
     case 'connecting':
-      return '⏳';
+      return '[Connecting]';
     case 'reconnecting':
-      return '🔄';
+      return '[Reconnecting]';
     case 'error':
-      return '⚠️';
+      return '[Error]';
     default:
-      return '❌';
+      return '[Closed]';
   }
 });
 

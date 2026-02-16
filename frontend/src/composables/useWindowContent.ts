@@ -2,7 +2,7 @@ export const generateSystemInfoHTML = () => {
   const now = new Date();
   return `
     <div style="padding: 20px; color: white; font-family: 'Segoe UI', sans-serif; max-height: 100%; overflow-y: auto;">
-      <h2 style="margin-bottom: 20px; color: #4f46e5;">💻 System Information</h2>
+      <h2 style="margin-bottom: 20px; color: #4f46e5;">[System] System Information</h2>
       
       <div style="margin-bottom: 20px;">
         <h3 style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 10px;">Operating System</h3>
@@ -125,7 +125,7 @@ export const generateSQLiteHTML = (users: User[] = []): string => {
   return `
     <div style="padding: 20px; color: white; font-family: 'Segoe UI', sans-serif; height: 100%; display: flex; flex-direction: column;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h2 style="color: #4f46e5;">🗄️ SQLite Database Viewer</h2>
+        <h2 style="color: #4f46e5;">[DB] SQLite Database Viewer</h2>
         <span style="background: #10b981; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;">Live Data</span>
       </div>
 

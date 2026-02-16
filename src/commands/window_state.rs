@@ -109,12 +109,12 @@ pub fn setup_handlers(window: &mut webui::Window) {
 
 fn log_window_state_change(payload: &WindowStateChangePayload) {
     let state_icon = match payload.new_state.as_str() {
-        "opened" => "📂",
-        "focused" => "👁️",
-        "minimized" => "🗕️",
-        "restored" => "🗖️",
-        "maximized" => "🗙️",
-        "closed" => "❌",
+        "opened" => "[Opened]",
+        "focused" => "[Focused]",
+        "minimized" => "[Minimized]",
+        "restored" => "[Restored]",
+        "maximized" => "[Maximized]",
+        "closed" => "[Closed]",
         "hidden" => "🙈",
         "shown" => "🐵",
         _ => "🪟",
