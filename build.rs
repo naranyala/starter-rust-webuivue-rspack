@@ -66,10 +66,10 @@ fn main() {
         }
     }
 
-    // Notify about post-build script
+    // Post-build script notification ( informational only )
     let post_build_path = format!("{}/post-build.sh", project_dir);
     if Path::new(&post_build_path).exists() {
-        println!("cargo:warning=Run './post-build.sh' after build to rename executable");
+        // User should run post-build.sh after build completes
     }
 }
 

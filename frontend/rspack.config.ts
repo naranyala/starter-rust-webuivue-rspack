@@ -1,6 +1,7 @@
 import { defineConfig } from '@rspack/cli';
 import { VueLoaderPlugin } from 'rspack-vue-loader';
 import HtmlRspackPlugin from '@rspack/plugin-html';
+import { DefinePlugin } from '@rspack/core';
 import path from 'node:path';
 
 export default defineConfig({
@@ -11,9 +12,16 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
+    extensions: ['.ts', '.js', '.vue', '.json'],
   },
   plugins: [
     new VueLoaderPlugin(),
+    new DefinePlugin({
+      'import.meta.env': JSON.stringify({
+        MODE: process.env.NODE_ENV || 'production',
+        VITE_APP_VERSION: '1.0.0',
+      }),
+    }),
     new HtmlRspackPlugin({
       template: './index.html',
     }),

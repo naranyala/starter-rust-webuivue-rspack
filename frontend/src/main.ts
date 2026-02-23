@@ -1,28 +1,53 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import App from './views/pages/App.vue';
-import './services/webui-bridge.js';
+import { logger } from './services';
+import { useErrorTracker } from './core/errorTracker';
 
-const logger = (window as any).logger;
-if (logger) {
+function setupGlobalErrorHandlers() {
+  window.addEventListener('error', (event) => {
+    logger.error(`[window.onerror] ${event.message}`, {
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    });
+    return false;
+  });
+
+  window.addEventListener('unhandledrejection', (event) => {
+    logger.error(`[unhandledrejection] ${event.reason}`, {});
+  });
+}
+
+function logStartupInfo() {
   logger.info('=============================================');
-  logger.info('Frontend: Communication Options');
-  logger.info('');
-  logger.info('[Transport Layer]:');
-  logger.info('  1. WebUI IPC    - Direct IPC via window.__webui__');
-  logger.info('  2. WebSocket    - TCP real-time (check backend for port)');
-  logger.info('  3. HTTP/REST    - Available for REST API calls');
-  logger.info('');
-  logger.info('[Serialization Format]:');
-  logger.info('  1. JSON         - Human-readable, widely supported (current)');
-  logger.info('  2. MessagePack  - Binary, compact, fast (msgpack-lite)');
-  logger.info('  3. CBOR         - Binary, self-describing (cbor-js)');
-  logger.info('  4. UBJSON       - Binary, type-safe (ubjson)');
-  logger.info('=============================================');
-  logger.info('Selected: WebUI IPC + WebSocket (hybrid mode)');
-  logger.info('  - Transport: WebUI IPC + WebSocket');
-  logger.info('  - Serialization: JSON');
+  logger.info('Frontend starting...');
+  logger.info('Version: 1.0.0');
   logger.info('=============================================');
 }
 
-const app = createApp(App);
-app.mount('#app');
+// Initialize
+const appEl = document.getElementById('app');
+if (appEl) {
+  appEl.innerHTML = '<div style="padding:20px;text-align:center;"><h2>Initializing...</h2></div>';
+}
+
+try {
+  setupGlobalErrorHandlers();
+  logStartupInfo();
+
+  const app = createApp(App);
+  const pinia = createPinia();
+  
+  app.use(pinia);
+  app.mount('#app');
+
+  (window as any).__errorTracker = useErrorTracker();
+  logger.info('Application initialized successfully');
+} catch (initError) {
+  console.error('[FATAL INIT ERROR]', initError);
+  const appEl = document.getElementById('app');
+  if (appEl) {
+    appEl.innerHTML = `<div style="padding:20px;color:red;background:#ffe6e6;"><h2>Fatal Error</h2><pre>${String(initError)}</pre></div>`;
+  }
+}

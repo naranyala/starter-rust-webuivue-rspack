@@ -73,21 +73,31 @@ const isBackendOk = computed(() => currentStatus.value === 'connected');
 
 const statusText = computed(() => {
   switch (currentStatus.value) {
-    case 'initializing': return 'Starting...';
-    case 'connecting': return 'Connecting...';
-    case 'connected': return 'Backend Connected';
-    case 'disconnected': return 'Disconnected';
-    case 'error': return 'Backend Error';
-    default: return 'Unknown';
+    case 'initializing':
+      return 'Starting...';
+    case 'connecting':
+      return 'Connecting...';
+    case 'connected':
+      return 'Backend Connected';
+    case 'disconnected':
+      return 'Disconnected';
+    case 'error':
+      return 'Backend Error';
+    default:
+      return 'Unknown';
   }
 });
 
 const statusClass = computed(() => {
   switch (currentStatus.value) {
-    case 'connected': return 'status-connected';
-    case 'connecting': return 'status-connecting';
-    case 'error': return 'status-error';
-    default: return 'status-disconnected';
+    case 'connected':
+      return 'status-connected';
+    case 'connecting':
+      return 'status-connecting';
+    case 'error':
+      return 'status-error';
+    default:
+      return 'status-disconnected';
   }
 });
 

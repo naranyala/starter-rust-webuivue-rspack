@@ -42,10 +42,10 @@ cargo build --release  # Release build
 
 ```bash
 # Development
-./target/debug/app
+./target/debug/rustwebui-app
 
 # Release
-./target/release/app
+./target/release/rustwebui-app
 ```
 
 ## Production Build
@@ -80,6 +80,23 @@ Key options:
 - Entry: `src/main.ts`
 - Output: `dist/`
 - Minification enabled for production
+- Code splitting for vendors
+- TypeScript support via SWC
+
+```typescript
+// Key rspack settings
+{
+  entry: './src/main.ts',
+  output: {
+    path: 'dist/',
+    publicPath: './',
+    filename: 'static/js/[name].[contenthash:8].js',
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.vue', '.json'],
+  },
+}
+```
 
 ### Backend (Cargo)
 
@@ -88,6 +105,38 @@ Key dependencies:
 - `rusqlite` - SQLite database
 - `tokio` - Async runtime
 - `tokio-tungstenite` - WebSocket
+
+Release profile settings:
+```toml
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+```
+
+## Testing
+
+### Backend Tests
+
+```bash
+cargo test
+```
+
+Current tests:
+- System information parsing
+- CPU usage calculation
+- Uptime parsing
+
+### Frontend Tests
+
+```bash
+cd frontend
+bun test
+```
+
+Current tests:
+- Error tracking functionality
+- Error boundary handling
 
 ## Troubleshooting
 
@@ -111,3 +160,37 @@ Key dependencies:
 | Rust build fails | Run `cargo update` |
 | App doesn't start | Check `application.log` |
 | Blank window | Verify `frontend/dist/index.html` exists |
+| DevTools not working | Check browser console |
+
+## File Locations
+
+After build, files are located at:
+
+```
+project-root/
+├── frontend/dist/
+│   ├── index.html
+│   └── static/
+│       ├── js/
+│       └── css/
+├── static/                    # Copied for WebUI
+│   ├── js/
+│   └── css/
+├── target/debug/
+│   └── rustwebui-app          # Binary
+├── app.db                     # SQLite (runtime)
+└── application.log            # Logs (runtime)
+```
+
+## DevTools
+
+The application includes a built-in DevTools panel accessible from the bottom of the window. Features:
+
+- Console log viewing
+- Error tracking
+- Network request monitoring
+- System information
+- State inspection
+- Test actions
+
+Click the panel header to expand/collapse.

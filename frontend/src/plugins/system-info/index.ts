@@ -8,7 +8,7 @@ export const createSystemInfoPlugin = (): SystemInfoPlugin => {
   return {
     name: 'system-info',
     version: '1.0.0',
-    
+
     initialize() {
       console.log('[SystemInfoPlugin] Initialized');
     },
@@ -24,9 +24,9 @@ export const createSystemInfoPlugin = (): SystemInfoPlugin => {
           window.removeEventListener('sysinfo_response', handler);
           resolve(customEvent.detail);
         };
-        
+
         window.addEventListener('sysinfo_response', handler);
-        
+
         const webui = (window as any).webui;
         if (webui) {
           webui.call('get_system_info');

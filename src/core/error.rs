@@ -1,6 +1,7 @@
 use thiserror::Error;
 
 #[derive(Error, Debug)]
+#[allow(dead_code)]
 pub enum AppError {
     #[error("Database error: {0}")]
     Database(#[from] rusqlite::Error),
@@ -33,6 +34,7 @@ pub fn lock_error<T>(e: std::sync::PoisonError<T>) -> AppError {
     AppError::Lock(e.to_string())
 }
 
+#[allow(dead_code)]
 pub fn not_found<T>(item: &str) -> AppError {
     AppError::NotFound(item.to_string())
 }

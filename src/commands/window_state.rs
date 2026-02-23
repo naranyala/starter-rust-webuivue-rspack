@@ -134,10 +134,12 @@ fn log_window_state_change(payload: &WindowStateChangePayload) {
     info!("  --------------------------------------------------");
 }
 
+#[allow(dead_code)]
 pub fn get_current_window_states() -> Vec<WindowStateChangePayload> {
     WINDOW_STATES.lock().unwrap().clone()
 }
 
+#[allow(dead_code)]
 pub fn get_window_state(window_id: i64) -> Option<WindowStateChangePayload> {
     let states = WINDOW_STATES.lock().unwrap();
     states

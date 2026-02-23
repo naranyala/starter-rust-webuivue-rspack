@@ -9,7 +9,7 @@ export const createHomePlugin = (): HomePlugin => {
   return {
     name: 'home',
     version: '1.0.0',
-    
+
     initialize() {
       console.log('[HomePlugin] Initialized');
     },

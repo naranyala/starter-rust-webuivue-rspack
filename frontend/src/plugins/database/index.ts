@@ -18,7 +18,7 @@ export const createDatabasePlugin = (): DatabasePlugin => {
   return {
     name: 'database',
     version: '1.0.0',
-    
+
     initialize() {
       console.log('[DatabasePlugin] Initialized');
     },
@@ -38,9 +38,9 @@ export const createDatabasePlugin = (): DatabasePlugin => {
             reject(new Error(customEvent.detail.error));
           }
         };
-        
+
         window.addEventListener('db_response', handler);
-        
+
         const webui = (window as any).webui;
         if (webui) {
           webui.call('get_users');
@@ -61,9 +61,9 @@ export const createDatabasePlugin = (): DatabasePlugin => {
             reject(new Error(customEvent.detail.error));
           }
         };
-        
+
         window.addEventListener('stats_response', handler);
-        
+
         const webui = (window as any).webui;
         if (webui) {
           webui.call('get_db_stats');

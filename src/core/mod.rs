@@ -1,5 +1,6 @@
 pub mod error;
 pub mod plugin;
 
-pub use error::{AppError, AppResult};
-pub use plugin::{Plugin, PluginManager, PluginRegistry};
+#[allow(unused_imports)]
+pub use error::AppError;
+pub use plugin::{Plugin, PluginManager};

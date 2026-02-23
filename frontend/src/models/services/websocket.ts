@@ -68,7 +68,7 @@ class WebSocketManager {
 
   private async init() {
     this.setStatus('initializing');
-    
+
     try {
       // Get WebSocket port from backend
       const wsPort = await this.getWebSocketPort();
@@ -82,7 +82,8 @@ class WebSocketManager {
       }
     } catch (error) {
       this.setStatus('error');
-      this.stats.lastError = error instanceof Error ? error.message : 'Failed to initialize WebSocket';
+      this.stats.lastError =
+        error instanceof Error ? error.message : 'Failed to initialize WebSocket';
       this.stats.lastErrorAt = new Date();
       log('Failed to initialize WebSocket:', error);
     }
@@ -102,7 +103,7 @@ class WebSocketManager {
         if ((window as any).webui?.call || (window as any).__webui__?.call) {
           const webui = (window as any).webui || (window as any).__webui__;
           webui.call('get_port_info');
-          
+
           // Set a timeout in case the callback doesn't come back
           setTimeout(() => {
             if ((window as any)._webui_port_callback) {
@@ -125,12 +126,12 @@ class WebSocketManager {
     try {
       const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
       const wsUrl = `${protocol}//${window.location.hostname}:${port}`;
-      
+
       log('Connecting to WebSocket:', wsUrl);
       this.setStatus('connecting');
-      
+
       this.ws = new WebSocket(wsUrl);
-      
+
       this.ws.onopen = () => {
         log('WebSocket connected');
         this.reconnectAttempts = 0;
@@ -138,29 +139,29 @@ class WebSocketManager {
         this.setStatus('connected');
         this.stats.lastConnected = new Date();
         this.startPing();
-        
+
         // Process queued messages
         this.processQueue();
       };
-      
+
       this.ws.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
           log('Received message:', data);
-          
+
           this.stats.messagesReceived++;
           this.stats.lastConnected = new Date();
-          
+
           // Handle ping/pong
           if (data.type === 'ping') {
             this.send({ type: 'pong', timestamp: Date.now() });
           }
-          
+
           // Handle response messages by dispatching custom events
           if (data.request_id && data.success !== undefined) {
             // This is a response to a request, dispatch a custom event
             let eventType = 'general_response';
-            
+
             // Map request types to specific event types
             if (data.request_type) {
               if (data.request_type === 'get_system_info') {
@@ -171,20 +172,20 @@ class WebSocketManager {
                 eventType = `${data.request_type.replace('get_', '')}_response`;
               }
             }
-            
+
             const customEvent = new CustomEvent(eventType, { detail: data });
             window.dispatchEvent(customEvent);
           }
-          
+
           // Notify message handlers
-          this.messageHandlers.forEach(handler => {
+          this.messageHandlers.forEach((handler) => {
             try {
               handler(data);
             } catch (e) {
               console.error('Error in message handler:', e);
             }
           });
-          
+
           if (this.status !== 'connected') {
             this.setStatus('connected');
           }
@@ -192,12 +193,12 @@ class WebSocketManager {
           log('Error parsing message:', error);
         }
       };
-      
+
       this.ws.onclose = (event) => {
         log('WebSocket closed:', event.code, event.reason);
         this.setStatus('disconnected');
         this.cleanup();
-        
+
         // Attempt to reconnect
         if (this.reconnectAttempts < this.maxReconnectAttempts) {
           setTimeout(() => {
@@ -211,7 +212,7 @@ class WebSocketManager {
           this.stats.lastErrorAt = new Date();
         }
       };
-      
+
       this.ws.onerror = (error) => {
         log('WebSocket error:', error);
         this.stats.lastError = error.toString();
@@ -221,7 +222,8 @@ class WebSocketManager {
     } catch (error) {
       log('Error creating WebSocket connection:', error);
       this.setStatus('error');
-      this.stats.lastError = error instanceof Error ? error.message : 'Failed to create WebSocket connection';
+      this.stats.lastError =
+        error instanceof Error ? error.message : 'Failed to create WebSocket connection';
       this.stats.lastErrorAt = new Date();
     }
   }
@@ -264,7 +266,7 @@ class WebSocketManager {
       this.ws.close();
       this.ws = null;
     }
-    
+
     if (this.pingInterval) {
       clearInterval(this.pingInterval);
       this.pingInterval = null;
@@ -371,7 +373,7 @@ class WebSocketManager {
         return false;
       }
     }
-    
+
     // If not connected, try to get the port and reconnect
     try {
       const wsPort = await this.getWebSocketPort();
@@ -385,7 +387,7 @@ class WebSocketManager {
       this.stats.lastErrorAt = new Date();
       this.setStatus('error');
     }
-    
+
     return false;
   }
 

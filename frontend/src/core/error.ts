@@ -33,9 +33,7 @@ export class AppError extends Error {
   }
 }
 
-export type Result<T, E = AppError> = 
-  | { ok: true; value: T }
-  | { ok: false; error: E };
+export type Result<T, E = AppError> = { ok: true; value: T } | { ok: false; error: E };
 
 export function ok<T>(value: T): Result<T, never> {
   return { ok: true, value };
@@ -67,9 +65,7 @@ export function mapErr<T, E, F>(result: Result<T, E>, fn: (error: E) => F): Resu
   return { ok: false, error: fn(result.error) };
 }
 
-export async function tryCatch<T>(
-  promise: Promise<T>
-): Promise<Result<T, AppError>> {
+export async function tryCatch<T>(promise: Promise<T>): Promise<Result<T, AppError>> {
   try {
     const value = await promise;
     return ok(value);

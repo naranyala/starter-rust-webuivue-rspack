@@ -1,4 +1,9 @@
-export type ConnectionStatus = 'initializing' | 'connecting' | 'connected' | 'disconnected' | 'error';
+export type ConnectionStatus =
+  | 'initializing'
+  | 'connecting'
+  | 'connected'
+  | 'disconnected'
+  | 'error';
 
 export interface ConnectionStats {
   latency: number | null;

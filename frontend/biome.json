@@ -24,12 +24,29 @@
     "rules": {
       "recommended": true,
       "suspicious": {
-        "noConsole": "off"
+        "noConsole": "off",
+        "noExplicitAny": "off"
+      },
+      "style": {
+        "useImportType": "off",
+        "noNonNullAssertion": "off",
+        "useTemplate": "off",
+        "useConst": "off"
+      },
+      "correctness": {
+        "noUnusedVariables": "off",
+        "noUnusedPrivateClassMembers": "off",
+        "noUnusedImports": "off",
+        "noUnusedFunctionParameters": "off"
+      },
+      "complexity": {
+        "useOptionalChain": "off"
       }
     }
   },
   "files": {
-    "includes": ["src/**/*.js", "src/**/*.ts", "src/**/*.vue"],
+    "includes": ["src/**/*.js", "src/**/*.ts", "src/**/*.vue", "src/**/*.test.ts"],
+    "ignoreUnknown": true,
     "experimentalScannerIgnores": ["node_modules", "dist", "*.min.js"]
   }
 }

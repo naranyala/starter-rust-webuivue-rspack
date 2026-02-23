@@ -6,9 +6,25 @@
   <title>rust webui integration</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/winbox@0.2.82/dist/css/winbox.min.css">
   <script>window.__WS_PORT__ = 9876;</script>
+  <script>
+    // Ultra-early error handler - catches errors before any framework loads
+    window.__EARLY_ERRORS__ = [];
+    window.onerror = function(msg, url, line, col, error) {
+      const err = { msg, url, line, col, error: error?.stack || error?.message || String(error), time: Date.now() };
+      window.__EARLY_ERRORS__.push(err);
+      console.error('[EARLY ERROR]', err);
+      document.getElementById('app').innerHTML = '<div style="padding:20px;color:red;background:#ffe6e6;"><h2>JavaScript Error</h2><pre>' + JSON.stringify(err, null, 2) + '</pre></div>';
+      return true;
+    };
+    window.onunhandledrejection = function(e) {
+      const err = { reason: e.reason?.stack || e.reason?.message || String(e.reason), time: Date.now() };
+      window.__EARLY_ERRORS__.push(err);
+      console.error('[EARLY UNHANDLED REJECTION]', err);
+    };
+  </script>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app"><div style="padding:20px;text-align:center;background:#f5f7fa;"><h2>Loading...</h2></div></div>
   <script src="https://cdn.jsdelivr.net/npm/winbox@0.2.82/dist/js/winbox.min.js"></script>
 </body>
 </html>

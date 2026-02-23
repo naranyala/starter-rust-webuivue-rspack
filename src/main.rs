@@ -1,80 +1,53 @@
-use log::{error, info};
+use log::{error, info, warn};
 use std::sync::Arc;
-use std::sync::atomic::{AtomicU16, Ordering};
+use std::panic;
 use webui_rs::webui;
 
-static WS_PORT_STORAGE: AtomicU16 = AtomicU16::new(0);
-
 mod core;
+mod commands;
 mod db;
 mod infrastructure;
 mod plugins;
 
-use core::{AppError, Plugin, PluginManager};
+use core::PluginManager;
 use infrastructure::{AppConfig, init_logging_with_config};
 use infrastructure::websocket::{WebSocketServer, get_available_port};
 use plugins::{DatabasePlugin, SystemInfoPlugin, WindowTrackingPlugin};
 use db::manager::DatabaseManager;
-use db::models::User;
+use commands::setup_all_handlers;
 
 include!(concat!(env!("OUT_DIR"), "/build_config.rs"));
 
-fn setup_ui_handlers(window: &mut webui::Window) {
-    info!("Setting up UI handlers...");
-
-    window.bind("open_folder", |_event| {
-        info!("Open folder button clicked!");
-    });
-
-    window.bind("organize_images", |_event| {
-        info!("Organize images button clicked!");
-    });
-
-    window.bind("ping_backend", |event| {
-        let win_id = event.window;
-        info!("Ping received from window {}", win_id);
-
-        let response = serde_json::json!({
-            "success": true,
-            "message": "pong",
-            "timestamp": chrono::Utc::now().to_rfc3339(),
-            "server": "rust-backend"
-        });
-
-        let js_code = format!(
-            "if(window._webui_pong) window._webui_pong({});",
-            response.to_string()
-        );
-
-        let win = webui::Window::from_id(win_id as usize);
-        let _ = win.run_js(&js_code);
-    });
-
-    info!("UI handlers set up successfully");
-}
-
-fn setup_counter_handlers(window: &mut webui::Window) {
-    window.bind("increment_counter", |event| {
-        let element_name = unsafe {
-            std::ffi::CStr::from_ptr(event.element)
-                .to_string_lossy()
-                .into_owned()
+fn setup_panic_handler() {
+    panic::set_hook(Box::new(|panic_info| {
+        let location = panic_info.location().map(|l| format!("{}:{}:{}", l.file(), l.line(), l.column())).unwrap_or_else(|| "unknown".to_string());
+        
+        let message = if let Some(s) = panic_info.payload().downcast_ref::<&str>() {
+            s.to_string()
+        } else if let Some(s) = panic_info.payload().downcast_ref::<String>() {
+            s.clone()
+        } else {
+            "Unknown panic".to_string()
         };
-        info!("Counter incremented in Rust backend - Element: {}", element_name);
-    });
-
-    window.bind("reset_counter", |event| {
-        let element_name = unsafe {
-            std::ffi::CStr::from_ptr(event.element)
-                .to_string_lossy()
-                .into_owned()
-        };
-        info!("Counter reset in Rust backend - Element: {}", element_name);
-    });
+        
+        eprintln!("=============================================");
+        eprintln!("PANIC OCCURRED!");
+        eprintln!("Location: {}", location);
+        eprintln!("Message: {}", message);
+        eprintln!("=============================================");
+        
+        if let Some(backtrace) = std::env::var_os("RUST_BACKTRACE") {
+            if backtrace == "1" || backtrace == "full" {
+                eprintln!("Backtrace:\n{:?}", std::backtrace::Backtrace::capture());
+            }
+        }
+    }));
 }
 
 #[tokio::main]
 async fn main() {
+    setup_panic_handler();
+    
     let config = match AppConfig::load() {
         Ok(config) => {
             println!("Configuration loaded successfully!");
@@ -123,10 +96,12 @@ async fn main() {
 
     info!("WebSocket server will run on port {}", ws_port);
 
-    let db_manager = match DatabaseManager::new(config.db_path.clone()) {
+    let _db_manager = match DatabaseManager::new(config.db_path.clone()) {
         Ok(manager) => Arc::new(manager),
         Err(e) => {
             error!("Failed to create database manager: {}", e);
+            error!("Database path: {}", config.db_path);
+            error!("Application cannot start without database");
             return;
         }
     };
@@ -134,8 +109,11 @@ async fn main() {
     let ws_server = WebSocketServer::new(ws_port);
     if let Err(e) = ws_server.start().await {
         error!("Failed to start WebSocket server: {}", e);
+        error!("WebSocket functionality will be unavailable");
+        warn!("Application will continue without WebSocket support");
+    } else {
+        info!("WebSocket server initialized on port {}", ws_port);
     }
-    info!("WebSocket server initialized on port {}", ws_port);
 
     // Initialize plugin manager
     let mut plugin_manager = PluginManager::new();
@@ -148,21 +126,19 @@ async fn main() {
     // Initialize all plugins
     if let Err(e) = plugin_manager.init_all() {
         error!("Failed to initialize plugins: {}", e);
+        for plugin in ["SystemInfoPlugin", "DatabasePlugin", "WindowTrackingPlugin"] {
+            warn!("Plugin '{}' may not be available", plugin);
+        }
     }
 
     // Create window and register plugins
     let mut my_window = webui::Window::new();
 
-    // Setup basic handlers
-    setup_ui_handlers(&mut my_window);
-    setup_counter_handlers(&mut my_window);
+    // Setup all handlers from commands module
+    setup_all_handlers(&mut my_window);
 
     // Register all plugins
     plugin_manager.register_all(&mut my_window);
-
-    // Store WebSocket port
-    WS_PORT_STORAGE.store(ws_port, Ordering::Relaxed);
-    my_window.bind("get_port_info", get_port_info_handler);
 
     info!("Loading application UI from frontend/dist/index.html");
     my_window.show("frontend/dist/index.html");
@@ -174,15 +150,4 @@ async fn main() {
 
     info!("Application shutting down...");
     info!("=============================================");
-}
-
-fn get_port_info_handler(event: webui::Event) {
-    let port = WS_PORT_STORAGE.load(Ordering::Relaxed) as i64;
-    
-    let js = format!(
-        "window._webui_port_callback && window._webui_port_callback({})",
-        port
-    );
-    
-    webui::Window::from_id(event.window).run_js(&js);
 }

@@ -13,10 +13,14 @@
     "format": "biome format src",
     "format:fix": "biome format src --write",
     "check": "biome check src",
-    "check:fix": "biome check src --write"
+    "check:fix": "biome check src --write",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "ci": "bun run check && bun run test"
   },
   "dependencies": {
     "vue": "^3.4.0",
+    "pinia": "^2.1.0",
     "winbox": "^0.2.82"
   },
   "devDependencies": {
@@ -27,5 +31,8 @@
     "@vue/compiler-sfc": "^3.4.0",
     "rspack-vue-loader": "^17.5.0",
     "typescript": "^5.0.0"
-  }
+  },
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }

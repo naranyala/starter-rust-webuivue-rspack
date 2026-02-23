@@ -1,51 +1,61 @@
 <template>
-  <div class="app">
-    <AppSidebar
-      :windows="activeWindows"
-      @home="hideAllWindows"
-      @toggle="toggleWindow"
-      @close="closeWindow"
-    />
+  <ErrorBoundary>
+    <div class="app">
+      <AppSidebar
+        :windows="activeWindows"
+        @home="hideAllWindows"
+        @toggle="toggleWindow"
+        @close="closeWindow"
+      />
 
-    <div class="main-container">
-      <header class="header">
-        <h1>System Dashboard</h1>
-      </header>
+      <div class="main-container">
+        <header class="header">
+          <h1>System Dashboard</h1>
+        </header>
 
-      <main class="main-content">
-        <section class="cards-section">
-          <div class="cards-grid two-cards">
-            <FeatureCard
-              icon="[System]"
-              title="System Information"
-              description="View detailed system information including OS, memory, CPU, and runtime statistics."
-              :tags="['Hardware', 'Stats']"
-              @click="openSystemInfoWindow"
-            />
+        <main class="main-content">
+          <section class="cards-section">
+            <div class="cards-grid two-cards">
+              <FeatureCard
+                icon="[System]"
+                title="System Information"
+                description="View detailed system information including OS, memory, CPU, and runtime statistics."
+                :tags="['Hardware', 'Stats']"
+                @click="openSystemInfoWindow"
+              />
 
-            <FeatureCard
-              icon="[DB]"
-              title="SQLite Database"
-              description="Interactive database viewer with sample data. Connects to backend SQLite integration."
-              :tags="['Database', 'Mockup']"
-              @click="openSQLiteWindow"
-            />
-          </div>
-        </section>
-      </main>
+              <FeatureCard
+                icon="[DB]"
+                title="SQLite Database"
+                description="Interactive database viewer with sample data. Connects to backend SQLite integration."
+                :tags="['Database', 'Mockup']"
+                @click="openSQLiteWindow"
+              />
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <ConnectionStatusBar />
+      <DevTools />
     </div>
-
-    <ConnectionStatusBar />
-  </div>
+  </ErrorBoundary>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import ConnectionStatusBar from '../../components/layout/ConnectionStatusBar.vue';
 import AppSidebar from '../../components/AppSidebar.vue';
+import ErrorBoundary from '../../components/ErrorBoundary.vue';
 import FeatureCard from '../../components/FeatureCard.vue';
+import ConnectionStatusBar from '../../components/layout/ConnectionStatusBar.vue';
+import DevTools from '../../components/DevTools.vue';
+import {
+  generateSQLiteHTML,
+  generateSystemInfoHTML,
+  type User,
+  updateSQLiteTable,
+} from '../../composables/useWindowContent.ts';
 import { useWindowManager, type WindowInfo } from '../../composables/useWindowManager.ts';
-import { generateSystemInfoHTML, generateSQLiteHTML, updateSQLiteTable, type User } from '../../composables/useWindowContent.ts';
 
 const activeWindows = ref<WindowInfo[]>([]);
 const { openWindow, toggleWindow, closeWindow, hideAllWindows } = useWindowManager(activeWindows);

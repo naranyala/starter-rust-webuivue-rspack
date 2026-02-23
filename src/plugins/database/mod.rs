@@ -1,7 +1,5 @@
 use crate::core::Plugin;
-use crate::db::manager::DatabaseManager;
 use log::info;
-use std::sync::Arc;
 use webui_rs::webui;
 
 pub struct DatabasePlugin;

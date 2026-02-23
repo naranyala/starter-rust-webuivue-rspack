@@ -1,7 +1,7 @@
 use crate::core::error::{lock_error, AppError, AppResult};
 use crate::db::models::User;
 use rusqlite::{params, Connection};
-use std::sync::{Arc, Mutex, MutexGuard};
+use std::sync::{Arc, Mutex};
 
 pub struct DatabaseManager {
     conn: Arc<Mutex<Connection>>,
@@ -40,6 +40,7 @@ impl DatabaseManager {
         Ok(())
     }
 
+    #[allow(dead_code)]
     pub fn insert_sample_data(&self) -> AppResult<()> {
         let conn = self.conn.lock().map_err(lock_error)?;
 
@@ -70,6 +71,7 @@ impl DatabaseManager {
         Ok(())
     }
 
+    #[allow(dead_code)]
     pub fn get_all_users(&self) -> AppResult<Vec<User>> {
         let conn = self.conn.lock().map_err(lock_error)?;
 
@@ -96,6 +98,7 @@ impl DatabaseManager {
         Ok(users)
     }
 
+    #[allow(dead_code)]
     pub fn get_user_by_id(&self, id: i64) -> AppResult<Option<User>> {
         let conn = self.conn.lock().map_err(lock_error)?;
 
@@ -120,6 +123,7 @@ impl DatabaseManager {
         }
     }
 
+    #[allow(dead_code)]
     pub fn insert_user(&self, name: &str, email: &str, role: &str, status: &str) -> AppResult<i64> {
         let conn = self.conn.lock().map_err(lock_error)?;
 
@@ -132,6 +136,7 @@ impl DatabaseManager {
         Ok(conn.last_insert_rowid())
     }
 
+    #[allow(dead_code)]
     pub fn update_user(
         &self,
         id: i64,
@@ -187,6 +192,7 @@ impl DatabaseManager {
         Ok(affected_rows)
     }
 
+    #[allow(dead_code)]
     pub fn delete_user(&self, id: i64) -> AppResult<usize> {
         let conn = self.conn.lock().map_err(lock_error)?;
 

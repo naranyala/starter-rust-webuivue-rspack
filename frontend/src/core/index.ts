@@ -1,13 +1,13 @@
-export { pluginManager, type Plugin, type PluginRegistry } from './plugin';
-export { connectionManager, type ConnectionStatus, type ConnectionStats } from './connection';
+export { type ConnectionStats, type ConnectionStatus, connectionManager } from './connection';
 export {
   AppError,
-  type Result,
-  ok,
   err,
-  isOk,
   isErr,
+  isOk,
   map,
   mapErr,
+  ok,
+  type Result,
   tryCatch,
 } from './error';
+export { type Plugin, type PluginRegistry, pluginManager } from './plugin';

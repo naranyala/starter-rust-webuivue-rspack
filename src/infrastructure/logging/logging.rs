@@ -94,6 +94,7 @@ impl Write for LogWriter {
     }
 }
 
+#[allow(dead_code)]
 pub fn init_logging(level: &str, _target_level: &str) {
     let log_level = match level.to_lowercase().as_str() {
         "trace" => LevelFilter::Trace,

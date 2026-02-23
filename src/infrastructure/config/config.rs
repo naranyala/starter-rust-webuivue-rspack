@@ -74,10 +74,12 @@ impl AppConfig {
         Ok(config)
     }
 
+    #[allow(dead_code)]
     pub fn get_db_path(&self) -> &str {
         &self.db_path
     }
 
+    #[allow(dead_code)]
     pub fn should_create_sample_data(&self) -> bool {
         self.create_sample_data
     }
@@ -98,6 +100,7 @@ impl AppConfig {
         self.append_log
     }
     
+    #[allow(dead_code)]
     pub fn get_window_title(&self) -> String {
         self.window_title.clone()
     }

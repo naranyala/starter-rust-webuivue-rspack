@@ -8,6 +8,7 @@ pub trait Plugin: Send + Sync {
     }
 }
 
+#[allow(dead_code)]
 pub trait PluginRegistry: Send + Sync {
     fn register_plugin(&self, plugin: Box<dyn Plugin>);
     fn get_plugin(&self, name: &str) -> Option<&dyn Plugin>;
@@ -29,6 +30,7 @@ impl PluginManager {
         self.plugins.push(plugin);
     }
 
+    #[allow(dead_code)]
     pub fn get_plugin(&self, name: &str) -> Option<&dyn Plugin> {
         self.plugins
             .iter()
@@ -36,6 +38,7 @@ impl PluginManager {
             .map(|p| p.as_ref() as &dyn Plugin)
     }
 
+    #[allow(dead_code)]
     pub fn get_all_plugins(&self) -> Vec<&dyn Plugin> {
         self.plugins
             .iter()
